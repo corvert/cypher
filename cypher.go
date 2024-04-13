@@ -14,7 +14,7 @@ func main() {
 	input := 0
 
 	for {
-		fmt.Println("Select operation (1/2):\n 1. Encrypt.\n 2. Decrypt.\n")
+		fmt.Println("Select operation (1/2):\n 1. Encrypt.\n 2. Decrypt.")
 		_, err := fmt.Scan(&input)
 		if err != nil {
 			continue
@@ -42,7 +42,7 @@ func encrypt() {
 
 	for {
 		fmt.Println("")
-		fmt.Println("Select cypher (1-3):\n 1. ROT13.\n 2. Reverse.\n 3. fun3.")
+		fmt.Println("Select cypher (1/2/3):\n 1. ROT13.\n 2. Reverse.\n 3. fun3.")
 
 		_, err := fmt.Scan(&inputEncrypt)
 		if err != nil {
@@ -69,7 +69,7 @@ func encrypt() {
 func decrypt() {
 	inputDecrypt := 0
 	for {
-		fmt.Println("Select cypher (1-3):\n 1. ROT13.\n 2. Reverse.\n 3. func31")
+		fmt.Println("Select cypher (1/2/3):\n 1. ROT13.\n 2. Reverse.\n 3. func31")
 		_, err := fmt.Scan(&inputDecrypt)
 		if err != nil {
 			continue
@@ -93,20 +93,31 @@ func decrypt() {
 }
 
 func ROT13() {
-
 	input := bufio.NewReader(os.Stdin)
-	fmt.Print("You chooce ROT13\nWhat whould You like to to encrypt: ")
+	fmt.Print("Enter text for ROT13 transformation: ")
 	text, _ := input.ReadString('\n')
 	text = strings.TrimSpace(text)
-	fmt.Printf("You entered: %s \n", text)
+	//fmt.Printf("You entered: %s \n", text)
 
-	//answer := ""
-	//for i:=0; i<len(input); i++{
-	//
-	//}
-
-	//fmt.Println("Decrypted message using ROT13:\n"+input)
+	var transformed []rune
+	for _, r := range text {
+		switch {
+		case r >= 'a' && r <= 'z':
+			// Shift character within the lowercase letters
+			transformed = append(transformed, 'a'+(r-'a'+13)%26)
+		case r >= 'A' && r <= 'Z':
+			// Shift character within the uppercase letters
+			transformed = append(transformed, 'A'+(r-'A'+13)%26)
+		default:
+			// Non-alphabetical characters are unchanged
+			transformed = append(transformed, r)
+		}
+	}
+	result := string(transformed)
+	fmt.Println("Transformed message using ROT13:", result)
 }
+
+
 
 func reverse() {
 	input := bufio.NewReader(os.Stdin)
