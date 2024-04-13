@@ -1,8 +1,8 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
-	
 )
 
 func main() {
@@ -15,7 +15,6 @@ func main() {
 		fmt.Println("Select operation (1/2):\n 1. Encrypt.\n 2. Decrypt.")
 		_, err := fmt.Scan(&input)
 		if err != nil {
-			fmt.Println("Error reading input:", err)
 			continue
 
 		}
@@ -45,7 +44,6 @@ func encrypt() {
 
 		_, err := fmt.Scan(&inputEncrypt)
 		if err != nil {
-			fmt.Print("Error reading input:", err)
 			continue
 		}
 
@@ -72,7 +70,6 @@ func decrypt() {
 		fmt.Println("Select cypher (1/2):\n 1. ROT13.\n 2. Reverse.\n 3. func31")
 		_, err := fmt.Scan(&inputDecrypt)
 		if err != nil {
-			fmt.Print("Invalid input", err)
 			continue
 		}
 
@@ -94,28 +91,33 @@ func decrypt() {
 }
 
 func ROT13() {
+
+	input := bufio.NewReader(os.Stdin)
 	fmt.Print("You chooce ROT13\nWhat whould You like to to encrypt: ")
-	input := ""
-	fmt.Scan(&input)
-	answer := ""
+	text, _ := input.ReadString('\n')
+	text = strings.TrimSpace(text)
+	fmt.Printf("You entered: %s \n", text)
+
+	//answer := ""
 	//for i:=0; i<len(input); i++{
-	//	
+	//
 	//}
 
-	fmt.Println("Decrypted message using ROT13:\n"+answer)
+	//fmt.Println("Decrypted message using ROT13:\n"+input)
 }
 
 func reverse() {
-	fmt.Print("You chooce ROT13\nWhat whould You like to to encrypt: ")
-	input := ""
-	fmt.Scan(&input)
-	fmt.Println("Decrypted message using reverse:\n" + input)
+	input := bufio.NewReader(os.Stdin)
+	fmt.Print("You chooce Reverse!\nWhat whould You like to to encrypt: ")
+	text, _ := input.ReadString('\n')
+	text = strings.TrimSpace(text)
+	fmt.Printf("You entered: %s \n", text)
 }
 
 func fun3() {
-	fmt.Println("fun3")
-	fmt.Print("You chooce ROT13\nWhat whould You like to to encrypt: ")
-	input := ""
-	fmt.Scan(&input)
-	fmt.Println(input)
+	input := bufio.NewReader(os.Stdin)
+	fmt.Print("You chooce FUNC3\nWhat whould You like to to encrypt: ")
+	text, _ := input.ReadString('\n')
+	text = strings.TrimSpace(text)
+	fmt.Printf("You entered: %s \n", text)
 }
