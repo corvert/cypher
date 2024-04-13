@@ -114,17 +114,34 @@ func ROT13() {
 		}
 	}
 	result := string(transformed)
-	fmt.Println("Transformed message using ROT13:", result)
+	fmt.Println("Transformed message using ROT13 cipher:", result)
 }
 
 
 
 func reverse() {
-	input := bufio.NewReader(os.Stdin)
-	fmt.Print("You chooce Reverse!\nWhat whould You like to to encrypt: ")
+
+input := bufio.NewReader(os.Stdin)
+	fmt.Print("Enter text for reverse transformation: ")
 	text, _ := input.ReadString('\n')
 	text = strings.TrimSpace(text)
-	fmt.Printf("You entered: %s \n", text)
+//	fmt.Printf("You entered: %s \n", text)
+
+	var transformed []rune
+	for _, r := range text {
+		if r >= 'a' && r <= 'z' {
+			// Calculate the mirrored lowercase letter
+			transformed = append(transformed, 'z'-(r-'a'))
+		} else if r >= 'A' && r <= 'Z' {
+			// Calculate the mirrored uppercase letter
+			transformed = append(transformed, 'Z'-(r-'A'))
+		} else {
+			// Non-alphabetical characters are unchanged
+			transformed = append(transformed, r)
+		}
+	}
+	result := string(transformed)
+	fmt.Println("Transformed message using reverse cipher:", result)
 }
 
 func fun3() {
