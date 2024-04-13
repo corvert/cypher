@@ -18,7 +18,6 @@ func main() {
 		_, err := fmt.Scan(&input)
 		if err != nil {
 			continue
-
 		}
 
 		switch input {
@@ -57,7 +56,7 @@ func encrypt() {
 			reverse()
 			return
 		case 3:
-			fun3()
+			fun3En()
 			return
 		default:
 			fmt.Println("Invalid input", inputEncrypt, "try again")
@@ -83,7 +82,7 @@ func decrypt() {
 			reverse()
 			return
 		case 3:
-			fun3()
+			fun3De()
 			return
 		default:
 			fmt.Println("Invalid input", inputDecrypt, "try again")
@@ -97,7 +96,7 @@ func ROT13() {
 	fmt.Print("Enter text for ROT13 transformation: ")
 	text, _ := input.ReadString('\n')
 	text = strings.TrimSpace(text)
-	//fmt.Printf("You entered: %s \n", text)
+	// fmt.Printf("You entered: %s \n", text)
 
 	var transformed []rune
 	for _, r := range text {
@@ -117,15 +116,12 @@ func ROT13() {
 	fmt.Println("Transformed message using ROT13 cipher:", result)
 }
 
-
-
 func reverse() {
-
-input := bufio.NewReader(os.Stdin)
+	input := bufio.NewReader(os.Stdin)
 	fmt.Print("Enter text for reverse transformation: ")
 	text, _ := input.ReadString('\n')
 	text = strings.TrimSpace(text)
-//	fmt.Printf("You entered: %s \n", text)
+	//	fmt.Printf("You entered: %s \n", text)
 
 	var transformed []rune
 	for _, r := range text {
@@ -144,10 +140,72 @@ input := bufio.NewReader(os.Stdin)
 	fmt.Println("Transformed message using reverse cipher:", result)
 }
 
-func fun3() {
+func fun3En() {
 	input := bufio.NewReader(os.Stdin)
-	fmt.Print("You chooce FUNC3\nWhat whould You like to to encrypt: ")
+	fmt.Print("Enter text for simple substitution transformation: ")
 	text, _ := input.ReadString('\n')
 	text = strings.TrimSpace(text)
-	fmt.Printf("You entered: %s \n", text)
+	// fmt.Printf("You entered: %s \n", text)
+
+	var transformed []rune
+	for _, r := range text {
+		switch {
+		case r >= 'a' && r <= 'z':
+			// Shift character to the next within the lowercase letters
+			// Wrap around from 'z' to 'a'
+			if r == 'z' {
+				transformed = append(transformed, 'a')
+			} else {
+				transformed = append(transformed, r+1)
+			}
+		case r >= 'A' && r <= 'Z':
+			// Shift character to the next within the uppercase letters
+			// Wrap around from 'Z' to 'A'
+			if r == 'Z' {
+				transformed = append(transformed, 'A')
+			} else {
+				transformed = append(transformed, r+1)
+			}
+		default:
+			// Non-alphabetical characters are unchanged
+			transformed = append(transformed, r)
+		}
+	}
+	result := string(transformed)
+	fmt.Println("Transformed message using simple substitution:", result)
+}
+
+func fun3De() {
+	input := bufio.NewReader(os.Stdin)
+	fmt.Print("Enter text for simple substitution transformation: ")
+	text, _ := input.ReadString('\n')
+	text = strings.TrimSpace(text)
+	// fmt.Printf("You entered: %s \n", text)
+
+	var transformed []rune
+	for _, r := range text {
+		switch {
+		case r >= 'a' && r <= 'z':
+			// Shift character to the next within the lowercase letters
+			// Wrap around from 'z' to 'a'
+			if r == 'z' {
+				transformed = append(transformed, 'a')
+			} else {
+				transformed = append(transformed, r-1)
+			}
+		case r >= 'A' && r <= 'Z':
+			// Shift character to the next within the uppercase letters
+			// Wrap around from 'Z' to 'A'
+			if r == 'Z' {
+				transformed = append(transformed, 'A')
+			} else {
+				transformed = append(transformed, r-1)
+			}
+		default:
+			// Non-alphabetical characters are unchanged
+			transformed = append(transformed, r)
+		}
+	}
+	result := string(transformed)
+	fmt.Println("Transformed message using simple substitution:", result)
 }
