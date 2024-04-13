@@ -14,7 +14,7 @@ func main() {
 	input := 0
 
 	for {
-		fmt.Println("Select operation (1/2):\n 1. Encrypt.\n 2. Decrypt.")
+		fmt.Println("Select operation (1/2):\n 1. Encrypt.\n 2. Decrypt.\n")
 		_, err := fmt.Scan(&input)
 		if err != nil {
 			continue
@@ -42,7 +42,7 @@ func encrypt() {
 
 	for {
 
-		fmt.Println("Select cypher (1/2):\n 1. ROT13.\n 2. Reverse.\n 3. fun3.")
+		fmt.Println("\nSelect cypher (1-3):\n 1. ROT13.\n 2. Reverse.\n 3. fun3.")
 
 		_, err := fmt.Scan(&inputEncrypt)
 		if err != nil {
@@ -69,7 +69,7 @@ func encrypt() {
 func decrypt() {
 	inputDecrypt := 0
 	for {
-		fmt.Println("Select cypher (1/2):\n 1. ROT13.\n 2. Reverse.\n 3. func31")
+		fmt.Println("Select cypher (1-3):\n 1. ROT13.\n 2. Reverse.\n 3. func31")
 		_, err := fmt.Scan(&inputDecrypt)
 		if err != nil {
 			continue
