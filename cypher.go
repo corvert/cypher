@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	
 )
 
 func main() {
@@ -14,7 +15,6 @@ func main() {
 		fmt.Println("Select operation (1/2):\n 1. Encrypt.\n 2. Decrypt.")
 		_, err := fmt.Scan(&input)
 		if err != nil {
-			fmt.Println("Error reading input:", err)
 			continue
 
 		}
@@ -44,7 +44,6 @@ func encrypt() {
 
 		_, err := fmt.Scan(&inputEncrypt)
 		if err != nil {
-			fmt.Print("Error reading input:", err)
 			continue
 		}
 
@@ -71,7 +70,6 @@ func decrypt() {
 		fmt.Println("Select cypher (1/2):\n 1. ROT13.\n 2. Reverse.\n 3. func31")
 		_, err := fmt.Scan(&inputDecrypt)
 		if err != nil {
-			fmt.Print("Invalid input", err)
 			continue
 		}
 
@@ -93,19 +91,23 @@ func decrypt() {
 }
 
 func ROT13() {
-	fmt.Print("You chooce ROT13\nWhat whould You like to to encrypt: ")
+	fmt.Print("You chooce ROT13\nWhat whould You like to to encrypt: \n")
 	input := ""
-	fmt.Scan(&input)
-	answer := ""
+	n, err := fmt.Scanf("%s\n", &input)
+	if err != nil {
+		fmt.Println(n, err)
+		return
+	}
+	//answer := ""
 	//for i:=0; i<len(input); i++{
 	//	
 	//}
 
-	fmt.Println("Decrypted message using ROT13:\n"+answer)
+	fmt.Println("Decrypted message using ROT13:\n"+input)
 }
 
 func reverse() {
-	fmt.Print("You chooce ROT13\nWhat whould You like to to encrypt: ")
+	fmt.Println("You chooce ROT13\nWhat whould You like to to encrypt: ")
 	input := ""
 	fmt.Scan(&input)
 	fmt.Println("Decrypted message using reverse:\n" + input)
