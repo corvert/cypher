@@ -1,76 +1,121 @@
 package main
 
 import (
-	
 	"fmt"
-
+	
 )
 
-func main(){
+func main() {
 	fmt.Println("Welcome to the Cypher Tool!")
 	fmt.Println("")
-	fmt.Println("Select operation (1/2):\n 1. Encrypt.\n 2. Decrypt.")
+
 	input := 0
-     fmt.Scan(&input)
 
-	switch input{
-	case 1:
-		encrypt()
-	case 2:
-		decrypt()
-	default:
-		fmt.Println("Invalid input", input,  "try again")
-		input = 0
-		return
+	for {
+		fmt.Println("Select operation (1/2):\n 1. Encrypt.\n 2. Decrypt.")
+		_, err := fmt.Scan(&input)
+		if err != nil {
+			fmt.Println("Error reading input:", err)
+			continue
+
+		}
+
+		switch input {
+		case 1:
+			encrypt()
+			return
+
+		case 2:
+			decrypt()
+			return
+
+		default:
+			fmt.Println("Invalid input", input, "try again")
 
 		}
 	}
-		
-func encrypt(){
-	fmt.Println("Select cypher (1/2):\n 1. ROT13.\n 2. Reverse.")
+}
+
+func encrypt() {
 	inputEncrypt := 0
-     fmt.Scan(&inputEncrypt)
 
-	switch inputEncrypt{
-	case 1:
-		ROT13()
-	case 2:
-		reverse()
-	case 3:
-		fun3()
-	default:
-		fmt.Println("Invalid input", inputEncrypt,  "try again")
+	for {
+
+		fmt.Println("Select cypher (1/2):\n 1. ROT13.\n 2. Reverse.\n 3. fun3.")
+
+		_, err := fmt.Scan(&inputEncrypt)
+		if err != nil {
+			fmt.Print("Error reading input:", err)
+			continue
+		}
+
+		switch inputEncrypt {
+		case 1:
+			ROT13()
+			return
+		case 2:
+			reverse()
+			return
+		case 3:
+			fun3()
+			return
+		default:
+			fmt.Println("Invalid input", inputEncrypt, "try again")
 
 		}
 	}
+}
 
-
-func decrypt(){
-	fmt.Println("Select cypher (1/2):\n 1. ROT13.\n 2. Reverse.")
+func decrypt() {
 	inputDecrypt := 0
-	fmt.Scan(&inputDecrypt)
+	for {
+		fmt.Println("Select cypher (1/2):\n 1. ROT13.\n 2. Reverse.\n 3. func31")
+		_, err := fmt.Scan(&inputDecrypt)
+		if err != nil {
+			fmt.Print("Invalid input", err)
+			continue
+		}
 
-	switch inputDecrypt{
-	case 1:
-		ROT13()
-	case 2:
-		reverse()
-	case 3:
-		fun3()
-	default:
-		fmt.Println("Invalid input", inputDecrypt,  "try again")
+		switch inputDecrypt {
+		case 1:
+			ROT13()
+			return
+		case 2:
+			reverse()
+			return
+		case 3:
+			fun3()
+			return
+		default:
+			fmt.Println("Invalid input", inputDecrypt, "try again")
 
 		}
+	}
 }
 
-func ROT13(){
-	fmt.Println("ROT13")
+func ROT13() {
+	fmt.Print("You chooce ROT13\nWhat whould You like to to encrypt: ")
+	input := ""
+	fmt.Scan(&input)
+	answer := ""
+	//for i:=0; i<len(input); i++{
+	//	
+	//}
+
+	fmt.Println("Decrypted message using ROT13:\n"+answer)
 }
 
-func reverse(){
-	fmt.Println("Reverse")
+func reverse() {
+	fmt.Print("You chooce ROT13\nWhat whould You like to to encrypt: ")
+	input := ""
+	fmt.Scan(&input)
+	fmt.Println("Decrypted message using reverse:\n" + input)
 }
 
-func fun3(){
+func fun3() {
 	fmt.Println("fun3")
+	fmt.Print("You chooce ROT13\nWhat whould You like to to encrypt: ")
+	input := ""
+	fmt.Scan(&input)
+	fmt.Println(input)
 }
