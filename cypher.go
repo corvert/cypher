@@ -41,8 +41,8 @@ func encrypt() {
 	inputEncrypt := 0
 
 	for {
-
-		fmt.Println("\nSelect cypher (1-3):\n 1. ROT13.\n 2. Reverse.\n 3. fun3.")
+		fmt.Println("")
+		fmt.Println("Select cypher (1-3):\n 1. ROT13.\n 2. Reverse.\n 3. fun3.")
 
 		_, err := fmt.Scan(&inputEncrypt)
 		if err != nil {
