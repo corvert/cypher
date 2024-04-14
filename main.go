@@ -38,7 +38,7 @@ func main() {
 				decrypt()
 				return
 			default:
-				fmt.Println("Invalid input", option, "try again.")
+				fmt.Println("Invalid input", option, "please enter a number (1 or 2).")
 			}
 		}
 	}
@@ -74,7 +74,7 @@ func encrypt() {
 
 	for {
 		fmt.Println("")
-		fmt.Println("Select cypher (1/2/3):\n1. ROT13.\n2. Reverse.\n3. fun3.")
+		fmt.Println("Select cypher (1/2/3):\n1. ROT13.\n2. Reverse.\n3. Simple Substitution.")
 		if scanner.Scan() {
 			input := scanner.Text()
 			input = strings.TrimSpace(input)
@@ -85,7 +85,7 @@ func encrypt() {
 
 			option, err := strconv.Atoi(input)
 			if err != nil {
-				fmt.Println("Invalid input, please enter a number (1 or 2).")
+				fmt.Println("Invalid input, please enter a number (1 or 2 or 3).")
 				continue
 			}
 
@@ -97,10 +97,10 @@ func encrypt() {
 				reverse()
 				return
 			case 3:
-				fun3En()
+				simpleSubstitutionEn()
 				return
 			default:
-				fmt.Println("Invalid input", option, "try again.")
+				fmt.Println("Invalid input", option, "please enter a number (1 or 2 or 3).")
 			}
 
 		}
@@ -141,7 +141,7 @@ func decrypt() {
 
 	for {
 		fmt.Println("")
-		fmt.Println("Select cypher (1/2/3):\n1. ROT13.\n2. Reverse.\n3. fun3.")
+		fmt.Println("Select cypher (1/2/3):\n1. ROT13.\n2. Reverse.\n3. Simple Substitution.")
 		if scanner.Scan() {
 			input := scanner.Text()
 			input = strings.TrimSpace(input)
@@ -152,7 +152,7 @@ func decrypt() {
 
 			option, err := strconv.Atoi(input)
 			if err != nil {
-				fmt.Println("Invalid input, please enter a number (1 or 2).")
+				fmt.Println("Invalid input, please enter a number (1 or 2 or 3).")
 				continue
 			}
 
@@ -164,10 +164,10 @@ func decrypt() {
 				reverse()
 				return
 			case 3:
-				fun3De()
+				simpleSubstitutionDe()
 				return
 			default:
-				fmt.Println("Invalid input", option, "try again.")
+				fmt.Println("Invalid input", option, "please enter a number (1 or 2 or 3).")
 			}
 
 		}
@@ -175,26 +175,3 @@ func decrypt() {
 
 }
 
-/* inputDecrypt := 0
-for {
-	fmt.Println("Select cypher (1/2/3):\n 1. ROT13.\n 2. Reverse.\n 3. func31")
-	_, err := fmt.Scan(&inputDecrypt)
-	if err != nil {
-		continue
-	}
-
-	switch inputDecrypt {
-	case 1:
-		ROT13()
-		return
-	case 2:
-		reverse()
-		return
-	case 3:
-		fun3De()
-		return
-	default:
-		fmt.Println("Invalid input", inputDecrypt, "try again")
-
-	}
-} */
