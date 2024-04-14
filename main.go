@@ -10,11 +10,11 @@ import (
 
 func main() {
 	fmt.Println("Welcome to the Cypher Tool!")
-	fmt.Println("")
 
 	scanner := bufio.NewScanner(os.Stdin)
 
 	for {
+		fmt.Println("")
 		fmt.Println("Select operation (1/2):\n1. Encrypt.\n2. Decrypt.")
 		if scanner.Scan() {
 			input := scanner.Text()
